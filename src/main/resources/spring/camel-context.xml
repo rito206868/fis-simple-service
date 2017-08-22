@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:camel="http://camel.apache.org/schema/spring"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	                    http://www.springframework.org/schema/beans/spring-beans.xsd        
-	                    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
-    <!-- Define a traditional camel context here -->
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-        <route id="empdetailservice-to-timerecordservice">
-            <from id="_from1" uri="timer:foo?fixedRate=true;period=5000;delay=3000"/>
-            <log id="_log1" message="Timer Started!!!!"/>
-            <to id="_to1" uri="restlet:http://microservice-goep-demo.apps.dev.openshift.opentlc.com/employees?restletMethod=get"/>
-            <log id="_log2" message="Employees records !!!"/>
-            <log id="_log3" message="${body}"/>
+    <!-- You could also define a traditional camel context here -->
+    <!--
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <route>
+            <from uri="timer://foo?period=1000"/>
+            <setBody><simple>Hello World from camel-contex.xml</simple></setBody>
+            <log message=">>> ${body}"/>
         </route>
     </camelContext>
+    -->
 </beans>
